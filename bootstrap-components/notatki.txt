@@ -1,0 +1,7 @@
+setup bootstrapa to jest mordęga
+nic nie dziala
+wszystko jest deprecated
+nic nie dziala
+w sumie to chuja tam jest 
+i chuja mozna customizowac
+customizowanie wymaga zmieninia jakichs variabli chuji muji dzikich wezy
