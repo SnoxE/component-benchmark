@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-heading: 'Montserrat', 'sans-serif';
+  --font-sans: 'Poppins', 'sans-serif';
+  --color-background: #fbfbfb;
+  --color-white-2: #fefefe;
+  --color-primary-orange: #ff6d01;
+  --color-borders: #c4c4c4;
+  --color-title: #141414;
+  --color-light-gray-text: #dcdcdc;
+}
+
+@layer base {
+  h1 {
+    @apply font-heading lg:text-[48px] lg:leading-[59px] font-extrabold;
+  }
+  h2 {
+    @apply font-heading lg:text-[32px] lg:leading-[39px] font-medium;
+  }
+  h3 {
+    @apply font-heading lg:text-[26px] lg:leading-[32px] font-medium;
+  }
+  h4 {
+    @apply font-heading lg:text-[22px] lg:leading-[27px] font-medium;
+  }
+}
+
+@layer components {
+  .body-text-xl {
+    @apply font-sans lg:text-[24px] lg:leading-[40px] font-medium;
+  }
+  .body-text-lg {
+    @apply font-sans lg:text-[24px] lg:leading-[40px] font-normal;
+  }
+  .body-text-md-regular {
+    @apply font-sans lg:text-[20px] lg:leading-[30px] font-normal;
+  }
+  .body-text-md-medium {
+    @apply font-sans lg:text-[18px] lg:leading-[27px] font-medium;
+  }
+  .body-text-sm {
+    @apply font-sans lg:text-[16px] lg:leading-[24px] font-normal;
+  }
+  .body-text-xs-medium {
+    @apply font-sans lg:text-[15px] lg:leading-[23px] font-medium;
+  }
+  .body-text-xs-regular {
+    @apply font-sans lg:text-[15px] lg:leading-[23px] font-normal;
+  }
+
+  .button-text-xl {
+    @apply font-sans lg:text-[24px] lg:leading-[36px] font-normal;
+  }
+  .button-text-lg {
+    @apply font-sans lg:text-[16px] lg:leading-[24px] font-normal;
+  }
+  .button-text-sm {
+    @apply font-sans lg:text-[14px] lg:leading-[21px] font-normal;
+  }
+}
