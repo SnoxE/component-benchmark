@@ -10,6 +10,7 @@
   --color-borders: #c4c4c4;
   --color-title: #141414;
   --color-light-gray-text: #dcdcdc;
+  --color-dark-gray: #575757;
 }
 
 @layer base {
@@ -34,7 +35,7 @@
   .body-text-lg {
     @apply font-sans lg:text-[24px] lg:leading-[40px] font-normal;
   }
-  .body-text-md-regular {
+  .body-text-md {
     @apply font-sans lg:text-[20px] lg:leading-[30px] font-normal;
   }
   .body-text-md-medium {
@@ -46,7 +47,7 @@
   .body-text-xs-medium {
     @apply font-sans lg:text-[15px] lg:leading-[23px] font-medium;
   }
-  .body-text-xs-regular {
+  .body-text-xs {
     @apply font-sans lg:text-[15px] lg:leading-[23px] font-normal;
   }
 

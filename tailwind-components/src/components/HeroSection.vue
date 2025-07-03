@@ -2,11 +2,11 @@
 
 <template>
   <section
-    class="flex w-full h-screen max-h-[765px] bg-gradient-to-r from-title from-40% to-white to-40%"
+    class="flex w-full h-screen max-h-[765px] bg-gradient-to-r from-title from-40% to-white to-40% mb-14"
   >
     <div class="container mx-auto relative max-w-screen-xl">
       <div class="flex items-center h-full justify-end">
-        <div class="flex py-[3rem] flex-col bg-black/15 pr-8 absolute z-10 left-0">
+        <div class="flex py-12 flex-col bg-black/15 px-8 absolute z-10 left-0">
           <h1 class="text-white pb-4">
             Enjoy your life with <br />
             our comfortable cars.
@@ -16,9 +16,7 @@
             Hic ducimus, omnis modi
           </p>
           <div>
-            <button
-              class="bg-primary-orange py-[0.75rem] px-[4rem] button-text-xl text-title rounded-2xl"
-            >
+            <button class="bg-primary-orange py-3 px-16 button-text-xl text-title rounded-2xl">
               Explore Now
             </button>
           </div>
