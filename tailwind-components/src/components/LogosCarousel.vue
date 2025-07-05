@@ -1,6 +1,18 @@
 <template>
   <div class="max-w-screen-xl items-center w-full mx-auto px-8 pb-14">
-    <swiper-container slides-per-view="6" speed="500" loop autoplay>
+    <swiper-container
+      slides-per-view="6"
+      speed="500"
+      :breakpoints="{
+        '0': { slidesPerView: 2 },
+        '510': { slidesPerView: 3 },
+        '640': { slidesPerView: 4 },
+        '850': { slidesPerView: 5 },
+        '1220': { slidesPerView: 7 },
+      }"
+      loop
+      autoplay
+    >
       <swiper-slide v-for="(image, index) in logosImages" :key="index">
         <div class="flex items-center justify-center h-24 px-4">
           <img

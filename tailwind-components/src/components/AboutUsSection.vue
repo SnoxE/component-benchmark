@@ -9,7 +9,7 @@
       <template #title>O NAS</template>
       <template #description>Poznaj nas lepiej</template>
     </SectionHeading>
-    <div class="grid grid-cols-2 items-center right-0">
+    <div class="flex flex-col gap-4 sm:grid sm:grid-cols-2 items-center right-0">
       <div class="mx-auto">
         <img
           src="@/assets/images/orange_lamborghini_huracan.png"

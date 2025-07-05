@@ -3,7 +3,7 @@
     <p class="mb-3 text-[#a5a5a5] mx-auto font-heading font-medium">
       <slot name="title"></slot>
     </p>
-    <h2 class="mx-auto font-semibold text-title">
+    <h2 class="mx-auto font-semibold text-title text-center">
       <slot name="description"></slot>
     </h2>
   </div>

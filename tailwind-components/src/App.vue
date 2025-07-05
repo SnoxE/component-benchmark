@@ -6,6 +6,7 @@ import AboutUsSection from './components/AboutUsSection.vue'
 import ServicesCarousel from './components/ServicesCarousel.vue'
 import LogosCarousel from './components/LogosCarousel.vue'
 import HowToBookSection from './components/HowToBookSection.vue'
+import FooterComponent from './components/FooterComponent.vue'
 </script>
 
 <template>
@@ -15,4 +16,5 @@ import HowToBookSection from './components/HowToBookSection.vue'
   <AboutUsSection></AboutUsSection>
   <HowToBookSection></HowToBookSection>
   <ServicesCarousel></ServicesCarousel>
+  <FooterComponent></FooterComponent>
 </template>

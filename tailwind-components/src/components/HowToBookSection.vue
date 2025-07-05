@@ -1,45 +1,57 @@
 <template>
   <SectionHeading>
     <template #title>JAK TO DZIAŁA</template>
-    <template #description>Zarezerwuj wizytę w 4 prostych krokach</template>
+    <template #description>Zarezerwuj wizytę w 5 prostych krokach</template>
   </SectionHeading>
   <div class="max-w-screen-xl w-full mx-auto px-8 pb-20">
-    <div class="grid grid-cols-3 gap-8">
-      <div class="flex flex-col items-center">
-        <!-- SVG for location -->
-        <div class="rounded-xl bg-white shadow-lg p-8 mb-4">
-          <!-- Paste SVG code for pin/map here from Lucide/Heroicons -->
-          <img src="@/assets/images/icons/car_with_tick.svg" alt="car" />
-        </div>
-        <h3 class="font-bold text-lg mb-1">Choose location</h3>
-        <p class="text-gray-400 text-center">Choose your location and find your best car.</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <!-- SVG for calendar -->
-        <div
-          class="rounded-xl bg-gradient-to-t from-primary-orange to-[#ffa844] shadow-lg p-8 mb-4"
-        >
-          <img src="@/assets/images/icons/car_with_tick.svg" alt="car" />
-        </div>
-        <h3 class="font-bold text-lg mb-1">Pick-up date</h3>
-        <p class="text-gray-400 text-center">Select your pick up date and time to book your car.</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <!-- SVG for car -->
-        <div class="rounded-xl bg-white shadow-lg p-8 mb-4">
-          <img src="@/assets/images/icons/car_with_tick.svg" alt="car" />
-        </div>
-        <h3 class="font-bold text-lg mb-1">Book your car</h3>
-        <p class="text-gray-400 text-center">
-          Book your car and we will deliver it directly to you.
-        </p>
-      </div>
+    <div class="grid xs:grid-cols-1 md:grid-cols-5 gap-7">
+      <HowToBookElement
+        v-for="(step, index) in stepList"
+        :key="index"
+        :icon="step.icon"
+        :variant="step.variant"
+      >
+        <template #heading>{{ step.heading }}</template>
+        <template #description>{{ step.description }}</template>
+      </HowToBookElement>
     </div>
-    <HowToBookElement class="pt-10"></HowToBookElement>
   </div>
 </template>
 
 <script setup>
 import SectionHeading from './SectionHeading.vue'
 import HowToBookElement from './HowToBookElement.vue'
+
+const stepList = [
+  {
+    icon: new URL('@/assets/images/icons/select_item.svg', import.meta.url).href,
+    heading: 'Wybierz usługę',
+    description: 'Wybierz odpowiednią usługę z naszej oferty',
+    variant: 'white',
+  },
+  {
+    icon: new URL('@/assets/images/icons/car_with_tick.svg', import.meta.url).href,
+    heading: 'Wybierz samochód',
+    description: 'Wybierz samochód, który chcesz do nas zapisać',
+    variant: 'light-orange',
+  },
+  {
+    icon: new URL('@/assets/images/icons/calendar.svg', import.meta.url).href,
+    heading: 'Wybierz datę i godzinę',
+    description: 'Wybierz dogodną dla siebie datę i godzinę realizacji usługi',
+    variant: 'orange',
+  },
+  {
+    icon: new URL('@/assets/images/icons/confirm_reservation.svg', import.meta.url).href,
+    heading: 'Potwierdź rezerwację',
+    description: 'Kliknij przycisk i zarezerwuj usługę',
+    variant: 'light-orange',
+  },
+  {
+    icon: new URL('@/assets/images/icons/location.svg', import.meta.url).href,
+    heading: 'Oddaj auto nam',
+    description: 'W wyznaczonym dniu zostaw auto u nas i poczekaj aż zacznie dziać się magia',
+    variant: 'white',
+  },
+]
 </script>

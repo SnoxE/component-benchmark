@@ -1,15 +1,20 @@
 <template>
-  <div class="flex flex-col max-w-screen-xl w-full mx-auto px-8 pb-20">
-    <!-- <h2
-      class="mb-10 text-title mx-auto after:block after:h-0.5 after:bg-primary-orange after:rounded-full after:mt-1"
-    >
-      Nasze usługi
-    </h2> -->
+  <div class="flex flex-col max-w-screen-xl w-full mx-auto xs:px-4 lg:px-12 xl:px-8 pb-20">
     <SectionHeading>
       <template #title>NASZE USŁUGI</template>
       <template #description>Zapoznaj się z naszymi najpopularniejszymi usługami</template>
     </SectionHeading>
-    <swiper-container slides-per-view="3" speed="500" pagination="true" class="mb-10">
+    <swiper-container
+      slides-per-view="3"
+      speed="500"
+      pagination="true"
+      :breakpoints="{
+        '0': { slidesPerView: 1 },
+        '640': { slidesPerView: 2 },
+        '1220': { slidesPerView: 3 },
+      }"
+      class="mb-10"
+    >
       <swiper-slide v-for="(image, index) in serviceImages" :key="index">
         <div class="px-4">
           <img :src="image.src" :alt="image.alt" class="rounded-t-[2rem]" />
@@ -22,7 +27,7 @@
             <p class="pb-3">
               {{ image.description }}
             </p>
-            <div class="flex gap-1 items-baseline">
+            <div class="flex gap-1 items-baseline pb-2">
               <p class="body-text-xs">od</p>
               <p class="body-text-md-medium">{{ image.price }}</p>
               <p class="body-text-md">PLN</p>

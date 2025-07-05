@@ -4,6 +4,9 @@
 @theme {
   --font-heading: 'Montserrat', 'sans-serif';
   --font-sans: 'Poppins', 'sans-serif';
+
+  --breakpoint-xs: 26rem;
+
   --color-background: #fbfbfb;
   --color-white-2: #fefefe;
   --color-primary-orange: #ff6d01;
@@ -15,13 +18,13 @@
 
 @layer base {
   h1 {
-    @apply font-heading lg:text-[48px] lg:leading-[59px] font-extrabold;
+    @apply font-heading text-[26px] xs:text-[30px] sm:text-[36px] md:text-[40px] lg:text-[48px] leading-[26px] xs:leading-[32px] lg:leading-[59px] font-extrabold;
   }
   h2 {
-    @apply font-heading lg:text-[32px] lg:leading-[39px] font-medium;
+    @apply font-heading text-[24px] xs:text-[26px] sm:text-[28px] lg:text-[32px] xs:leading-[24px] lg:leading-[39px] font-semibold;
   }
   h3 {
-    @apply font-heading lg:text-[26px] lg:leading-[32px] font-medium;
+    @apply font-heading text-[18px] sm:text-[22px] lg:text-[26px] lg:leading-[32px] font-medium;
   }
   h4 {
     @apply font-heading lg:text-[22px] lg:leading-[27px] font-medium;
@@ -33,7 +36,7 @@
     @apply font-sans lg:text-[24px] lg:leading-[40px] font-medium;
   }
   .body-text-lg {
-    @apply font-sans lg:text-[24px] lg:leading-[40px] font-normal;
+    @apply font-sans text-[20px] lg:text-[24px] lg:leading-[40px] font-normal;
   }
   .body-text-md {
     @apply font-sans lg:text-[20px] lg:leading-[30px] font-normal;

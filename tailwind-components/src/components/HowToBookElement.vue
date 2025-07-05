@@ -1,12 +1,19 @@
 <template>
   <div class="flex flex-col items-center">
-    <!-- SVG for car -->
-    <div class="rounded-xl bg-primary-orange shadow-lg p-8 mb-4">
+    <div
+      class="rounded-xl bg-gradient-to-t p-6 mb-4 shadow-lg"
+      :class="[
+        // Variant colors
+        variant === 'white' && 'bg-background',
+        variant === 'light-orange' && 'from-[#ffa844] to-[#ffd7a9] ',
+        variant === 'orange' && 'from-primary-orange to-[#ffa844] ',
+      ]"
+    >
       <slot name="icon">
-        <img :v-if="icon" :src="icon" :alt="iconAlt" />
+        <img :v-if="icon" :src="icon" :alt="iconAlt" class="w-10 filter grayscale" />
       </slot>
     </div>
-    <h3 class="font-bold text-lg mb-1">
+    <h3 class="font-bold mb-1 text-center">
       <slot name="heading">{{ heading }}</slot>
     </h3>
     <p class="text-gray-400 text-center">
@@ -24,5 +31,9 @@ defineProps({
   },
   heading: String,
   description: String,
+  variant: {
+    type: String,
+    default: 'white',
+  },
 })
 </script>
