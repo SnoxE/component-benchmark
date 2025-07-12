@@ -13,7 +13,7 @@
         <img :v-if="icon" :src="icon" :alt="iconAlt" class="w-10 filter grayscale" />
       </slot>
     </div>
-    <h3 class="font-bold mb-1 text-center">
+    <h3 class="font-bold mb-2 text-center">
       <slot name="heading">{{ heading }}</slot>
     </h3>
     <p class="text-gray-400 text-center">
