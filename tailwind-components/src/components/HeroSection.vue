@@ -16,9 +16,12 @@
             Hic ducimus, omnis modi
           </p>
           <div>
-            <button class="bg-primary-orange py-3 px-16 button-text-xl text-title rounded-2xl">
+            <router-link
+              to="/about"
+              class="bg-primary-orange py-3 px-16 button-text-xl text-title rounded-2xl"
+            >
               Explore Now
-            </button>
+            </router-link>
           </div>
         </div>
         <div class="">

@@ -1,19 +1,23 @@
 <template>
-  <div class="fixed w-full left-0 top-0 z-15">
+  <div
+    class="fixed w-full left-0 top-0 z-15"
+    :class="[
+      'transition-colors duration-700',
+      scrolled ? 'bg-white/80 shadow-md' : 'bg-transparent',
+    ]"
+  >
     <div class="flex px-8 xl:px-0 max-w-screen-xl mx-auto py-8 justify-between">
-      <div class="">
-        <router-link to="/" class="self-center text-primary-orange text-heading text-2xl">
-          DG Detailing
-        </router-link>
-      </div>
+      <router-link to="/" class="self-center text-primary-orange text-heading text-2xl">
+        DG Detailing
+      </router-link>
       <nav class="flex space-around">
         <ul class="hidden nav:flex nav:gap-8 nav:items-center">
           <li><router-link to="/" class="text-sm">O Nas</router-link></li>
-          <li><router-link to="/" class="text-sm">Oferta</router-link></li>
-          <li><router-link to="/" class="text-sm">Rezerwuj</router-link></li>
-          <li><router-link to="/" class="text-sm">Kontakt</router-link></li>
+          <li><router-link to="/services" class="text-sm">Oferta</router-link></li>
+          <li><router-link to="/book" class="text-sm">Rezerwuj</router-link></li>
+          <li><router-link to="/contact" class="text-sm">Kontakt</router-link></li>
           <li class="ml-20">
-            <router-link to="/" class="text-sm bg-primary-orange rounded-md py-2 px-4">
+            <router-link to="/login" class="text-sm bg-primary-orange rounded-md py-2 px-4">
               Zaloguj
             </router-link>
           </li>
@@ -67,9 +71,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const isOpen = ref(false)
+const scrolled = ref(false)
+
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 50
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 const navBarItems = [
   {

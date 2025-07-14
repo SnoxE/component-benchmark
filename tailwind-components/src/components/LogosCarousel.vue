@@ -18,7 +18,7 @@
           <img
             :src="image.src"
             :alt="image.alt"
-            class="max-h-16 object-contain filter grayscale hover:grayscale-0"
+            class="max-h-16 object-contain nav:filter nav:grayscale nav:hover:grayscale-0"
           />
         </div>
       </swiper-slide>
