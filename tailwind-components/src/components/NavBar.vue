@@ -91,23 +91,23 @@ onUnmounted(() => {
 const navBarItems = [
   {
     name: 'O Nas',
-    link: '/',
+    link: '/about',
   },
   {
     name: 'Oferta',
-    link: '/',
+    link: '/services',
   },
   {
     name: 'Rezerwuj',
-    link: '/',
+    link: '/book',
   },
   {
     name: 'Kontakt',
-    link: '/',
+    link: '/contact',
   },
   {
     name: 'Zaloguj',
-    link: '/',
+    link: '/login',
   },
 ]
 </script>

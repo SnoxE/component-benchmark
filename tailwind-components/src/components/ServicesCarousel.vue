@@ -17,9 +17,9 @@
     >
       <swiper-slide v-for="(image, index) in serviceImages" :key="index">
         <div class="px-4">
-          <img :src="image.src" :alt="image.alt" class="rounded-t-[2rem]" />
+          <img :src="image.src" :alt="image.alt" class="rounded-t-2xl" />
           <div
-            class="border-b border-r border-l border-borders rounded-b-[2rem] pb-4 pl-4 pt-2 text-title"
+            class="border-b border-r border-l border-borders rounded-b-2xl pb-4 pl-4 pt-2 text-title"
           >
             <div class="body-text-lg font-semibold pb-0.5">
               {{ image.name }}
@@ -38,7 +38,7 @@
     </swiper-container>
     <router-link
       class="mx-auto border px-4 py-2 rounded-full border-borders body-text-sm font-medium"
-      to="#"
+      to="/services"
     >
       Poznaj naszą pełną ofertę →
     </router-link>

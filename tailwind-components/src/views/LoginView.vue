@@ -1,9 +1,7 @@
 <template>
-  <!-- <LoginPage></LoginPage> -->
-  <LoginPageChat></LoginPageChat>
+  <LoginPage></LoginPage>
 </template>
 
 <script setup>
-// import LoginPage from '@/components/LoginPage.vue'
-import LoginPageChat from '@/components/LoginPageChat.vue'
+import LoginPage from '@/components/LoginPage.vue'
 </script>
