@@ -22,10 +22,10 @@
                 :alt="iconAlt"
                 class="filter grayscale pr-2"
               />
-              <p class="body-text-md-medium font-semibold">{{ image.minPrice }}</p>
+              <p class="body-text-md-medium pr-1">{{ image.minPrice }}</p>
               <p class="body-text-md">PLN</p>
               <p class="body-text-md px-1">-</p>
-              <p class="body-text-md-medium font-semibold">{{ image.maxPrice }}</p>
+              <p class="body-text-md-medium pr-1">{{ image.maxPrice }}</p>
               <p class="body-text-md">PLN</p>
             </div>
             <div class="flex items-center pb-2">
@@ -34,10 +34,10 @@
                 :alt="iconAlt"
                 class="filter grayscale pr-2"
               />
-              <p class="body-text-md-medium font-semibold">{{ image.minTime }}</p>
+              <p class="body-text-md-medium">{{ image.minTime }}</p>
               <p class="body-text-md">h</p>
               <p class="body-text-md px-1">-</p>
-              <p class="body-text-md-medium font-semibold">{{ image.maxTime }}</p>
+              <p class="body-text-md-medium">{{ image.maxTime }}</p>
               <p class="body-text-md">h</p>
             </div>
           </div>
