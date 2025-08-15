@@ -91,22 +91,27 @@
           <a href="#" class="text-primary-orange hover:underline">Nie pamiętasz hasła?</a>
         </div>
 
+        <p v-if="errorMsg" class="text-sm text-red-600 px-1 mt-2">
+          {{ errorMsg }}
+        </p>
+
         <button
           type="submit"
-          class="w-full bg-primary-orange text-white py-2 rounded-md transition"
+          :disabled="loading"
+          class="w-full bg-primary-orange text-white py-2 rounded-md transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
         >
           Zaloguj się
         </button>
 
         <div class="flex items-center my-4">
           <div class="flex-grow h-px bg-gray-300"></div>
-          <span class="mx-2 text-sm text-gray-500">or</span>
+          <span class="mx-2 text-sm text-gray-500">lub</span>
           <div class="flex-grow h-px bg-gray-300"></div>
         </div>
 
         <button
           type="button"
-          class="w-full bg-gray-900 text-white py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-black"
+          class="w-full bg-gray-900 text-white py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-black cursor-pointer"
         >
           <svg class="w-5 h-5" viewBox="0 0 48 48">
             <path
@@ -126,7 +131,7 @@
               d="M43.6 20.5H42V20H24v8h11.3a12.1 12.1 0 01-4.2 5.7l6.1 5.1C39.5 35.2 44 28.7 44 24c0-1.3-.1-2.6-.4-3.5z"
             />
           </svg>
-          <span>Lub zaloguj się z Google</span>
+          <span>Zaloguj się z Google</span>
         </button>
       </form>
 
@@ -142,17 +147,31 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 
 const email = ref('')
 const password = ref('')
 const remember = ref(false)
 const showPassword = ref(false)
 
+const auth = useAuthStore()
+
+const loading = ref(false)
+const errorMsg = ref('')
+
 const togglePassword = () => {
   showPassword.value = !showPassword.value
 }
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   console.log({ email: email.value, password: password.value, remember: remember.value })
+  errorMsg.value = ''
+  loading.value = true
+
+  try {
+    await auth.login(email.value, password.value)
+  } finally {
+    loading.value = false
+  }
 }
 </script>

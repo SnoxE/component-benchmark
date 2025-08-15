@@ -113,7 +113,7 @@ export default {
             { id: 'orders', name: 'Rezerwacje', url: '/user/rezerwacje' },
             { id: 'cars', name: 'Samochody', url: '/user/cars' },
             { id: 'calendar', name: 'Kalendarz', url: '/user/kalendarz' }
-            // { id: 'logout', name: 'Wyloguj', url: '/' },
+            { id: 'logout', name: 'Wyloguj', url: '/' },
           ]
         }
       ],

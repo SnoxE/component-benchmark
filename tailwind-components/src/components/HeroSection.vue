@@ -2,11 +2,13 @@
 
 <template>
   <section
-    class="flex w-full h-screen max-h-[765px] bg-gradient-to-r from-title from-40% to-white to-40% mb-14"
+    class="flex w-full h-screen max-h-[600px] md:max-h-[765px] bg-gradient-to-r from-title from-40% to-white to-40% mb-14"
   >
     <div class="container mx-auto relative max-w-screen-xl">
-      <div class="flex items-center h-full justify-end">
-        <div class="flex py-12 flex-col bg-black/15 px-8 absolute z-10 left-0">
+      <div class="flex flex-col md:flex-row items-start md:items-center h-full justify-end">
+        <div
+          class="flex w-full py-12 flex-col bg-black/75 md:bg-black/15 px-8 md:absolute sm:z-10 sm:left-0"
+        >
           <h1 class="text-white pb-4">
             Enjoy your life with <br />
             our comfortable cars.
@@ -15,10 +17,10 @@
             Lorem ipsum dolor sit consectetur <br />
             Hic ducimus, omnis modi
           </p>
-          <div>
+          <div class="mx-auto md:mx-0">
             <router-link
               to="/about"
-              class="bg-primary-orange py-3 px-16 button-text-xl text-title rounded-2xl"
+              class="bg-primary-orange py-3 px-8 sm:px-16 button-text-xl text-title rounded-2xl"
             >
               Explore Now
             </router-link>
@@ -31,9 +33,3 @@
     </div>
   </section>
 </template>
-
-<style>
-.xd {
-  background: linear-gradient(to right, #000000 50%, #ffffff 50%);
-}
-</style>

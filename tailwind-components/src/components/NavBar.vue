@@ -12,14 +12,55 @@
       </router-link>
       <nav class="flex space-around">
         <ul class="hidden nav:flex nav:gap-8 nav:items-center">
-          <li><router-link to="/" class="text-sm">O Nas</router-link></li>
-          <li><router-link to="/services" class="text-sm">Oferta</router-link></li>
-          <li><router-link to="/book" class="text-sm">Rezerwuj</router-link></li>
-          <li><router-link to="/contact" class="text-sm">Kontakt</router-link></li>
-          <li class="ml-20">
-            <router-link to="/login" class="text-sm bg-primary-orange rounded-md py-2 px-4">
-              Zaloguj
+          <li v-for="(item, index) in menuItems" :key="index" class="relative group">
+            <router-link
+              v-if="!item.children"
+              :to="item.url"
+              class="text-sm"
+              :class="
+                item.cta ? 'ml-20 bg-primary-orange rounded-md py-2 px-4 text-background' : ''
+              "
+            >
+              {{ item.name }}
             </router-link>
+            <button
+              v-else
+              type="button"
+              class="flex items-center gap-1 cursor-pointer"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              <!-- Person icon -->
+              <img src="@/assets/images/icons/person.svg" alt="user" />
+            </button>
+            <ul
+              v-if="item.children"
+              class="opacity-0 group-hover:opacity-100 transition absolute top-full right-0 mt-2 min-w-[12rem] bg-white shadow-lg rounded-md py-2 z-30"
+              role="menu"
+            >
+              <li v-for="child in item.children" :key="child.id">
+                <button
+                  v-if="child.id === 'logout'"
+                  @click="onItemClick(child)"
+                  class="w-full text-left text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  role="menuitem"
+                >
+                  {{ child.name }}
+                </button>
+                <router-link
+                  v-else
+                  :to="child.url"
+                  class="block text-sm px-4 py-2 hover:bg-gray-100"
+                  role="menuitem"
+                >
+                  {{ child.name }}
+                </router-link>
+              </li>
+            </ul>
+            <!-- <button v-if="item.logout" @click="onLogout" class="text-sm cursor-pointer">
+              {{ item.name }}
+            </button> -->
+            <!-- <router-link v-else :to="item.link" class="text-sm">{{ item.name }}</router-link> -->
           </li>
         </ul>
         <button @click="isOpen = !isOpen" class="block nav:hidden cursor-pointer">
@@ -60,54 +101,105 @@
     </div>
     <ul class="flex flex-col items-start">
       <li
-        v-for="(item, index) in navBarItems"
+        v-for="(item, index) in menuItems"
         :key="index"
         class="border-b-1 border-light-gray-text w-full py-2 px-4"
       >
-        <router-link :to="item.link" class="text-sm">{{ item.name }}</router-link>
+        <router-link :to="item.url" class="text-sm">{{ item.name }}</router-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { useAuthStore } from '@/stores/auth'
+import { storeToRefs } from 'pinia'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 const isOpen = ref(false)
 const scrolled = ref(false)
+const auth = useAuthStore()
+const { isLoggedIn } = storeToRefs(auth)
 
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50
 }
-
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
-
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-const navBarItems = [
+const loggedOutItems = [
   {
     name: 'O Nas',
-    link: '/about',
+    url: '/about',
   },
   {
     name: 'Oferta',
-    link: '/services',
+    url: '/services',
   },
   {
     name: 'Rezerwuj',
-    link: '/book',
+    url: '/book',
   },
   {
     name: 'Kontakt',
-    link: '/contact',
+    url: '/contact',
   },
   {
     name: 'Zaloguj',
-    link: '/login',
+    url: '/login',
+    cta: true,
   },
 ]
+
+const loggedInItems = [
+  {
+    id: 'about',
+    name: 'O Nas',
+    url: '/about',
+  },
+  {
+    id: 'oferta',
+    name: 'Oferta',
+    url: '/services',
+  },
+  {
+    id: 'book',
+    name: 'Rezerwuj',
+    url: '/book',
+  },
+  {
+    id: 'contact',
+    name: 'Kontakt',
+    url: '/contact',
+  },
+  {
+    id: 'user',
+    url: '/',
+    children: [
+      { id: 'profile', name: 'Profil', url: '/user/profile' },
+      { id: 'orders', name: 'Rezerwacje', url: '/user/reservations' },
+      { id: 'cars', name: 'Samochody', url: '/user/cars' },
+      { id: 'calendar', name: 'Kalendarz', url: '/user/calendar' },
+      { id: 'logout', name: 'Wyloguj', url: '/', logout: true, cta: true },
+    ],
+  },
+]
+
+const menuItems = computed(() => (isLoggedIn.value ? loggedInItems : loggedOutItems))
+
+const onItemClick = async (item) => {
+  if (item.id === 'logout') {
+    auth.logout()
+    isOpen.value = false
+    // await router.push('/') // or '/login'
+  }
+  if (item.url) {
+    isOpen.value = false
+    // await router.push(item.url)
+  }
+}
 </script>

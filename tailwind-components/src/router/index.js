@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 import LandingPageView from '@/views/LandingPageView.vue'
 
 const router = createRouter({
@@ -12,9 +13,6 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('@/views/LoginView.vue'),
     },
     {
@@ -27,7 +25,27 @@ const router = createRouter({
       name: 'services',
       component: () => import('@/views/ServicesView.vue'),
     },
+    {
+      path: '/user/cars',
+      name: 'cars',
+      component: () => import('@/views/CarsView.vue'),
+    },
+    {
+      path: '/user/reservations',
+      name: 'reservations',
+      component: () => import('@/views/ReservationsView.vue'),
+    },
   ],
+})
+
+router.beforeEach(async (to) => {
+  const publicPages = ['/login', '/rejestracja', '/', '/oferta']
+  const authRequired = !publicPages.includes(to.path)
+  const auth = useAuthStore()
+
+  if (authRequired && !auth.user) {
+    return '/login'
+  }
 })
 
 export default router
