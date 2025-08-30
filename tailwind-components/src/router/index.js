@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('@/views/ServicesView.vue'),
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('@/views/ContactView.vue'),
+    },
+    {
       path: '/user/cars',
       name: 'cars',
       component: () => import('@/views/CarsView.vue'),
@@ -35,11 +40,34 @@ const router = createRouter({
       name: 'reservations',
       component: () => import('@/views/ReservationsView.vue'),
     },
+    {
+      path: '/user/add-car',
+      name: 'add-car',
+      component: () => import('@/views/AddCarView.vue'),
+    },
+    {
+      path: '/book',
+      name: 'book',
+      component: () => import('@/views/BookView.vue'),
+    },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else if (to.hash) {
+      return {
+        el: to.hash,
+        top: 120,
+        behavior: 'smooth',
+      }
+    } else {
+      return { top: 0 }
+    }
+  },
 })
 
 router.beforeEach(async (to) => {
-  const publicPages = ['/login', '/rejestracja', '/', '/oferta']
+  const publicPages = ['/login', '/register', '/', '/services', '/contact']
   const authRequired = !publicPages.includes(to.path)
   const auth = useAuthStore()
 

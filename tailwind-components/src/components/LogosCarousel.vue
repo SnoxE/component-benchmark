@@ -19,6 +19,7 @@
             :src="image.src"
             :alt="image.alt"
             class="max-h-16 object-contain nav:filter nav:grayscale nav:hover:grayscale-0"
+            loading="lazy"
           />
         </div>
       </swiper-slide>
@@ -29,15 +30,15 @@
 <script setup>
 const logosImages = [
   {
-    src: new URL('@/assets/images/logos/gyeon.png', import.meta.url).href,
+    src: new URL('@/assets/images/logos/gyeon-250.webp', import.meta.url).href,
     alt: 'GYEON logo',
   },
   {
-    src: new URL('@/assets/images/logos/carpro.png', import.meta.url).href,
+    src: new URL('@/assets/images/logos/carpro-250.webp', import.meta.url).href,
     alt: 'CarPro logo',
   },
   {
-    src: new URL('@/assets/images/logos/ADBL.png', import.meta.url).href,
+    src: new URL('@/assets/images/logos/ADBL-250.webp', import.meta.url).href,
     alt: 'ADBL logo',
   },
   {
@@ -45,23 +46,23 @@ const logosImages = [
     alt: 'FX Protect logo',
   },
   {
-    src: new URL('@/assets/images/logos/funky_witch.png', import.meta.url).href,
+    src: new URL('@/assets/images/logos/funky_witch-250.webp', import.meta.url).href,
     alt: 'Funky Witch logo',
   },
   {
-    src: new URL('@/assets/images/logos/kiurlab.png', import.meta.url).href,
+    src: new URL('@/assets/images/logos/kiurlab-250.webp', import.meta.url).href,
     alt: 'KiurLab logo',
   },
   {
-    src: new URL('@/assets/images/logos/soft99.png', import.meta.url).href,
+    src: new URL('@/assets/images/logos/soft99-250.webp', import.meta.url).href,
     alt: 'Soft99 logo',
   },
   {
-    src: new URL('@/assets/images/logos/work_stuff.png', import.meta.url).href,
+    src: new URL('@/assets/images/logos/work_stuff-250.webp', import.meta.url).href,
     alt: 'Work Stuff logo',
   },
   {
-    src: new URL('@/assets/images/logos/good_stuff.png', import.meta.url).href,
+    src: new URL('@/assets/images/logos/good_stuff-250.webp', import.meta.url).href,
     alt: 'Good Stuff logo',
   },
 ]

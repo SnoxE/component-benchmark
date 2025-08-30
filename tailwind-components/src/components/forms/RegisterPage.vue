@@ -1,16 +1,19 @@
 <template>
   <div class="h-screen w-full flex flex-col md:flex-row">
-    <div class="2xl:w-3/4 xl:w-2/3 lg:w-3/5 md:w-1/2 h-1/5 xs:h-1/4 sm:h-1/3 md:h-full relative">
+    <!-- LEFT IMAGE SIDE -->
+    <div class="2xl:w-3/4 xl:w-2/3 lg:w-3/5 md:w-1/2 h-1/3 md:h-full relative">
       <img
-        src="@/assets/images/login/senna_runway_cropped.jpg"
-        alt="Login background"
+        src="@/assets/images/login/senna_runway_cropped-1750.webp"
+        alt="Register background"
         class="w-full h-full object-cover"
       />
     </div>
 
+    <!-- RIGHT FORM SIDE -->
     <div
-      class="2xl:w-1/4 xl:w-/3 lg:w-2/5 md:w-1/2 w-full flex flex-col justify-center px-8 py-10 bg-white"
+      class="2xl:w-1/4 xl:w-/3 lg:w-2/5 md:w-1/2 w-full flex flex-col justify-center px-8 py-12 bg-white"
     >
+      <!-- Branding -->
       <div class="flex items-center mb-6">
         <router-link
           to="/"
@@ -20,15 +23,43 @@
         </router-link>
       </div>
 
-      <h2 class="text-lg sm:text-2xl mb-6 text-title">Dobrze Cię znowu widzieć!</h2>
+      <h2 class="text-lg sm:text-2xl mb-6 text-title">Witaj w naszym studiu!</h2>
 
+      <!-- Form -->
       <form @submit.prevent="handleSubmit" class="space-y-5">
+        <div>
+          <label class="text-sm font-medium text-dark-gray block mb-1 pl-4">Imię</label>
+          <input
+            type="text"
+            v-model="first_name"
+            placeholder="Podaj imię"
+            class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-orange"
+          />
+        </div>
+        <div>
+          <label class="text-sm font-medium text-dark-gray block mb-1 pl-4">Nazwisko</label>
+          <input
+            type="text"
+            v-model="last_name"
+            placeholder="Podaj nazwisko"
+            class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-orange"
+          />
+        </div>
+        <div>
+          <label class="text-sm font-medium text-dark-gray block mb-1 pl-4">Telefon</label>
+          <input
+            type="text"
+            v-model="phone_number"
+            placeholder="Podaj numer telefonu"
+            class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-orange"
+          />
+        </div>
         <div>
           <label class="text-sm font-medium text-dark-gray block mb-1 pl-4">Login</label>
           <input
             type="text"
             v-model="email"
-            placeholder="Email"
+            placeholder="Podaj email"
             class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-orange"
           />
         </div>
@@ -39,7 +70,7 @@
             <input
               :type="showPassword ? 'text' : 'password'"
               v-model="password"
-              placeholder="Hasło"
+              placeholder="Podaj hasło"
               class="w-full border border-gray-300 rounded-md px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-primary-orange"
             />
             <button
@@ -83,24 +114,11 @@
           </div>
         </div>
 
-        <div class="flex items-center justify-between text-sm">
-          <label class="flex items-center space-x-2">
-            <input type="checkbox" v-model="remember" class="rounded" />
-            <span>Zapamiętaj mnie</span>
-          </label>
-          <a href="#" class="text-primary-orange hover:underline">Nie pamiętasz hasła?</a>
-        </div>
-
-        <p v-if="errorMsg" class="text-sm text-red-600 px-1 mt-2">
-          {{ errorMsg }}
-        </p>
-
         <button
           type="submit"
-          :disabled="loading"
-          class="w-full bg-primary-orange text-white py-2 rounded-md transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+          class="w-full bg-primary-orange text-white py-2 rounded-md transition"
         >
-          Zaloguj się
+          Zarejestruj się
         </button>
 
         <div class="flex items-center my-4">
@@ -111,7 +129,7 @@
 
         <button
           type="button"
-          class="w-full bg-gray-900 text-white py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-black cursor-pointer"
+          class="w-full bg-gray-900 text-white py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-black"
         >
           <svg class="w-5 h-5" viewBox="0 0 48 48">
             <path
@@ -131,15 +149,15 @@
               d="M43.6 20.5H42V20H24v8h11.3a12.1 12.1 0 01-4.2 5.7l6.1 5.1C39.5 35.2 44 28.7 44 24c0-1.3-.1-2.6-.4-3.5z"
             />
           </svg>
-          <span>Zaloguj się z Google</span>
+          <span>Lub zaloguj się z Google</span>
         </button>
       </form>
 
       <p class="text-center text-sm mt-6">
-        Nie masz jeszcze konta?
-        <router-link to="/register" class="text-primary-orange hover:underline"
-          >Zarejestruj się</router-link
-        >
+        Masz już konto?
+        <router-link to="/login" class="text-primary-orange hover:underline">
+          Zaloguj się
+        </router-link>
       </p>
     </div>
   </div>
@@ -147,31 +165,21 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useAuthStore } from '@/stores/auth'
 
+const first_name = ref('')
+const last_name = ref('')
+const phone_number = ref('')
 const email = ref('')
 const password = ref('')
+
 const remember = ref(false)
 const showPassword = ref(false)
-
-const auth = useAuthStore()
-
-const loading = ref(false)
-const errorMsg = ref('')
 
 const togglePassword = () => {
   showPassword.value = !showPassword.value
 }
 
-const handleSubmit = async () => {
+const handleSubmit = () => {
   console.log({ email: email.value, password: password.value, remember: remember.value })
-  errorMsg.value = ''
-  loading.value = true
-
-  try {
-    await auth.login(email.value, password.value)
-  } finally {
-    loading.value = false
-  }
 }
 </script>

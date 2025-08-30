@@ -105,7 +105,14 @@
         :key="index"
         class="border-b-1 border-light-gray-text w-full py-2 px-4"
       >
-        <router-link :to="item.url" class="text-sm">{{ item.name }}</router-link>
+        <router-link
+          v-if="item.id === 'logout'"
+          @click="onItemClick(item)"
+          :to="item.url"
+          class="text-sm"
+          >{{ item.name }}</router-link
+        >
+        <router-link v-else :to="item.url" class="text-sm">{{ item.name }}</router-link>
       </li>
     </ul>
   </div>
@@ -117,6 +124,7 @@ import { storeToRefs } from 'pinia'
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 const isOpen = ref(false)
+const isMobile = ref(false)
 const scrolled = ref(false)
 const auth = useAuthStore()
 const { isLoggedIn } = storeToRefs(auth)
@@ -125,16 +133,23 @@ const handleScroll = () => {
   scrolled.value = window.scrollY > 50
 }
 onMounted(() => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
   window.addEventListener('scroll', handleScroll)
 })
 onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile)
   window.removeEventListener('scroll', handleScroll)
 })
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 912 // e.g. below `lg:` breakpoint
+}
 
 const loggedOutItems = [
   {
     name: 'O Nas',
-    url: '/about',
+    url: '/#about',
   },
   {
     name: 'Oferta',
@@ -159,7 +174,7 @@ const loggedInItems = [
   {
     id: 'about',
     name: 'O Nas',
-    url: '/about',
+    url: '/#about',
   },
   {
     id: 'oferta',
@@ -180,26 +195,51 @@ const loggedInItems = [
     id: 'user',
     url: '/',
     children: [
-      { id: 'profile', name: 'Profil', url: '/user/profile' },
       { id: 'orders', name: 'Rezerwacje', url: '/user/reservations' },
       { id: 'cars', name: 'Samochody', url: '/user/cars' },
-      { id: 'calendar', name: 'Kalendarz', url: '/user/calendar' },
       { id: 'logout', name: 'Wyloguj', url: '/', logout: true, cta: true },
     ],
   },
 ]
 
-const menuItems = computed(() => (isLoggedIn.value ? loggedInItems : loggedOutItems))
+const mobileLoggedInItems = [
+  {
+    id: 'about',
+    name: 'O Nas',
+    url: '/#about',
+  },
+  {
+    id: 'oferta',
+    name: 'Oferta',
+    url: '/services',
+  },
+  {
+    id: 'book',
+    name: 'Rezerwuj',
+    url: '/book',
+  },
+  {
+    id: 'contact',
+    name: 'Kontakt',
+    url: '/contact',
+  },
+  { id: 'orders', name: 'Rezerwacje', url: '/user/reservations' },
+  { id: 'cars', name: 'Samochody', url: '/user/cars' },
+  { id: 'logout', name: 'Wyloguj', url: '/', logout: true, cta: true },
+]
+
+const menuItems = computed(() => {
+  if (!isLoggedIn.value) return loggedOutItems
+  return isMobile.value ? mobileLoggedInItems : loggedInItems
+})
 
 const onItemClick = async (item) => {
   if (item.id === 'logout') {
     auth.logout()
     isOpen.value = false
-    // await router.push('/') // or '/login'
   }
   if (item.url) {
     isOpen.value = false
-    // await router.push(item.url)
   }
 }
 </script>

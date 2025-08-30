@@ -10,24 +10,30 @@
           class="flex w-full py-12 flex-col bg-black/75 md:bg-black/15 px-8 md:absolute sm:z-10 sm:left-0"
         >
           <h1 class="text-white pb-4">
-            Enjoy your life with <br />
-            our comfortable cars.
+            Odkryj perfekcyjny <br />
+            wygląd swojego auta
           </h1>
           <p class="text-light-gray-text body-text-lg pb-12 text">
-            Lorem ipsum dolor sit consectetur <br />
-            Hic ducimus, omnis modi
+            Profesjonalna pielęgnacja, renowacja <br />
+            i ochrona Twojego samochodu.
           </p>
           <div class="mx-auto md:mx-0">
             <router-link
-              to="/about"
+              to="/#about"
               class="bg-primary-orange py-3 px-8 sm:px-16 button-text-xl text-title rounded-2xl"
             >
-              Explore Now
+              Odkrywaj
             </router-link>
           </div>
         </div>
         <div class="">
-          <img src="@/assets/images/amg_gt3.png" alt="Car Image" />
+          <img
+            src="@/assets/images/amg_gt3-909.webp"
+            alt="Car Image"
+            rel="preload"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
       </div>
     </div>

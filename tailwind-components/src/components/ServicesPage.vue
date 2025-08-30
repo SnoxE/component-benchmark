@@ -1,9 +1,12 @@
 <template>
   <div class="bg-background">
     <div class="container mx-auto max-w-screen-xl pt-24">
-      <h2 class="pb-8 sm:pb-10 md:pb-12 lg:pb-14 text-center">Poznaj nasze wszystkie usługi</h2>
+      <SectionHeading>
+        <template #title>OFERTA</template>
+        <template #description>Poznaj nasze wszystkie usługi</template>
+      </SectionHeading>
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-4 px-6 sm:px-8 lg:px-4 xl:px-0"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-4 px-6 sm:px-8 lg:px-4 xl:px-0 pb-8"
       >
         <div v-for="(image, index) in serviceImages" :key="index">
           <img :src="image.src" :alt="image.alt" class="rounded-t-xl relative" />
@@ -48,66 +51,76 @@
 </template>
 
 <script setup>
+import SectionHeading from '@/components/SectionHeading.vue'
+
 const serviceImages = [
   {
-    src: new URL('@/assets/images/services/foamed_porsche.jpg', import.meta.url).href,
+    src: new URL('@/assets/images/services/foamed_porsche-750.webp', import.meta.url).href,
     alt: 'Foamed Porsche during wash',
     name: 'Mycie ręczne',
-    description: 'Podstawowy opis wykonywanej usługi',
-    minPrice: 400,
-    maxPrice: 1000,
+    description:
+      'Mycie karoserii przy użyciu bezpiecznych środków i technik, które gwarantują czystość bez ryzyka zarysowań.',
+    minPrice: 100,
+    maxPrice: 140,
     minTime: 1,
-    maxTime: 8,
+    maxTime: 1.5,
   },
   {
-    src: new URL('@/assets/images/services/car_hood_ppf.jpg', import.meta.url).href,
+    src: new URL('@/assets/images/services/car_hood_ppf-750.webp', import.meta.url).href,
     alt: 'Car hood with paint protection film',
     name: 'Paint Protection Film',
-    description: 'Podstawowy opis wykonywanej usługi',
-    minPrice: 400,
-    maxPrice: 1000,
-    minTime: 1,
-    maxTime: 8,
+    description:
+      'Folia ochronna najwyższej jakości, która zabezpiecza lakier przed zarysowaniami, odpryskami i czynnikami zewnętrznymi.',
+    minPrice: 2500,
+    maxPrice: 4000,
+    minTime: 8,
+    maxTime: 10,
   },
   {
-    src: new URL('@/assets/images/services/machine_polishing_cropped.jpg', import.meta.url).href,
+    src: new URL('@/assets/images/services/machine_polishing_cropped-750.webp', import.meta.url)
+      .href,
     alt: 'Machine polishing a car surface',
     name: 'Korekta lakieru',
-    description: 'Podstawowy opis wykonywanej usługi',
-    minPrice: 400,
-    maxPrice: 1000,
-    minTime: 1,
-    maxTime: 8,
+    description:
+      'Profesjonalna korekta lakieru usuwające rysy, zmatowienia i hologramy, przywracająca głębię koloru i połysk lakieru.',
+    minPrice: 1500,
+    maxPrice: 2100,
+    minTime: 8,
+    maxTime: 10,
   },
   {
-    src: new URL('@/assets/images/services/porsche_ceramic_coating.jpg', import.meta.url).href,
+    src: new URL('@/assets/images/services/porsche_ceramic_coating-750.webp', import.meta.url).href,
     alt: 'Porsche with ceramic coating applied',
     name: 'Powłoka ceramiczna',
-    description: 'Podstawowy opis wykonywanej usługi',
-    minPrice: 400,
-    maxPrice: 1000,
-    minTime: 1,
-    maxTime: 8,
+    description:
+      'Zaawansowana ochrona lakieru, która zwiększa trwałość, nadaje szklisty połysk i ułatwia codzienną pielęgnację auta.',
+    minPrice: 1800,
+    maxPrice: 2400,
+    minTime: 6,
+    maxTime: 7,
   },
   {
-    src: new URL('@/assets/images/services/porsche_interior_cleaning.jpg', import.meta.url).href,
+    src: new URL('@/assets/images/services/porsche_interior_cleaning-750.webp', import.meta.url)
+      .href,
     alt: 'Porsche interior cleaning in progress',
     name: 'Czyszczenie wnętrza',
-    description: 'Podstawowy opis wykonywanej usługi',
-    minPrice: 400,
-    maxPrice: 1000,
-    minTime: 1,
-    maxTime: 8,
+    description:
+      'Kompleksowe odświeżenie wnętrza - czyszczenie tapicerki, plastików i detali, aby Twój samochód wyglądał i pachniał jak nowy.',
+    minPrice: 600,
+    maxPrice: 750,
+    minTime: 6,
+    maxTime: 7,
   },
   {
-    src: new URL('@/assets/images/services/window_tint.jpg', import.meta.url).href,
+    src: new URL('@/assets/images/services/window_tint-750.webp', import.meta.url).href,
     alt: 'Applying window tint to car',
     name: 'Przyciemnianie szyb',
-    description: 'Podstawowy opis wykonywanej usługi',
-    minPrice: 400,
+    description:
+      'Estetyczne i funkcjonalne przyciemnienie szyb, poprawiające komfort jazdy, prywatność oraz ochronę przed promieniowaniem UV.',
+    minPrice: 600,
     maxPrice: 1000,
-    minTime: 1,
-    maxTime: 8,
+    minTime: 4,
+    maxTime: 6,
   },
 ]
 </script>
