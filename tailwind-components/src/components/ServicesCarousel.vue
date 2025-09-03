@@ -36,47 +36,6 @@
         </div>
       </swiper-slide>
     </swiper-container>
-    <!-- <swiper-container
-      slides-per-view="3"
-      speed="500"
-      pagination="true"
-      :breakpoints="{
-        '0': { slidesPerView: 1 },
-        '640': { slidesPerView: 2 },
-        '1220': { slidesPerView: 3 },
-      }"
-      class="mb-10"
-    >
-      <swiper-slide v-for="(image, index) in serviceImages" :key="index">
-        <div class="px-4 h-full">
-          <div class="h-full flex flex-col rounded-2xl overflow-hidden border border-borders">
-            <img
-              :src="image.src"
-              :alt="image.alt"
-              class="w-full aspect-[4/3] object-cover"
-              loading="lazy"
-            />
-
-            <div class="flex flex-col justify-between flex-1 px-6 pt-2 pb-4 text-title">
-              <div>
-                <div class="body-text-lg font-semibold pb-0.5">
-                  {{ image.name }}
-                </div>
-                <p class="pb-3">
-                  {{ image.description }}
-                </p>
-              </div>
-
-              <div class="flex gap-1 items-baseline pt-2">
-                <p class="body-text-xs">od</p>
-                <p class="body-text-md-medium">{{ image.minPrice }}</p>
-                <p class="body-text-md">PLN</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </swiper-slide>
-    </swiper-container> -->
     <router-link
       class="mx-auto border px-4 py-2 rounded-full border-borders body-text-sm font-medium"
       to="/services"

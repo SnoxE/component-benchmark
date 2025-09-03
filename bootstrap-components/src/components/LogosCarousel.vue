@@ -1,0 +1,85 @@
+<template>
+  <div class="container-xl px-4 pb-5">
+    <swiper-container
+      slides-per-view="6"
+      speed="500"
+      :breakpoints="{
+        '0': { slidesPerView: 2 },
+        '510': { slidesPerView: 3 },
+        '640': { slidesPerView: 4 },
+        '850': { slidesPerView: 5 },
+        '1220': { slidesPerView: 7 },
+      }"
+      loop
+      autoplay
+    >
+      <swiper-slide v-for="(image, index) in logosImages" :key="index">
+        <div class="d-flex align-items-center justify-content-center h-100 px-3">
+          <img :src="image.src" :alt="image.alt" class="logo-img img-fluid" loading="lazy" />
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</template>
+
+<script setup>
+const logosImages = [
+  {
+    src: new URL('@/assets/images/logos/gyeon-250.webp', import.meta.url).href,
+    alt: 'GYEON logo',
+  },
+  {
+    src: new URL('@/assets/images/logos/carpro-250.webp', import.meta.url).href,
+    alt: 'CarPro logo',
+  },
+  {
+    src: new URL('@/assets/images/logos/ADBL-250.webp', import.meta.url).href,
+    alt: 'ADBL logo',
+  },
+  {
+    src: new URL('@/assets/images/logos/fxprotect_copy.jpg', import.meta.url).href,
+    alt: 'FX Protect logo',
+  },
+  {
+    src: new URL('@/assets/images/logos/funky_witch-250.webp', import.meta.url).href,
+    alt: 'Funky Witch logo',
+  },
+  {
+    src: new URL('@/assets/images/logos/kiurlab-250.webp', import.meta.url).href,
+    alt: 'KiurLab logo',
+  },
+  {
+    src: new URL('@/assets/images/logos/soft99-250.webp', import.meta.url).href,
+    alt: 'Soft99 logo',
+  },
+  {
+    src: new URL('@/assets/images/logos/work_stuff-250.webp', import.meta.url).href,
+    alt: 'Work Stuff logo',
+  },
+  {
+    src: new URL('@/assets/images/logos/good_stuff-250.webp', import.meta.url).href,
+    alt: 'Good Stuff logo',
+  },
+]
+</script>
+
+<style scoped>
+.logo-img {
+  max-height: 4rem;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.logo-img:hover {
+  filter: grayscale(0%);
+}
+
+swiper-container {
+  padding: 1.5rem 0;
+}
+
+swiper-slide {
+  height: 6rem;
+}
+</style>

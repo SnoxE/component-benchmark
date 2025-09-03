@@ -21,7 +21,7 @@
           <p class="text-dark-gray text-lg">
             Jesteśmy zespołem pasjonatów motoryzacji, którzy z najwyższą starannością dbają o wygląd
             i kondycję Twojego samochodu. Nasze studio detailingowe oferuje kompleksowe usługi
-            pielęgnacji i ochrony pojazdów – od dokładnego mycia, przez renowację lakieru, po
+            pielęgnacji i ochrony pojazdów - od dokładnego mycia, przez renowację lakieru, po
             profesjonalne zabezpieczenia powłokami ochronnymi. Stawiamy na najwyższą jakość,
             precyzję oraz indywidualne podejście do każdego auta, aby zawsze wyglądało jak nowe.
           </p>

@@ -182,7 +182,9 @@ const getServices = async () => {
 }
 
 const getServiceInfo = async () => {
-  const response = await api.get(`/api/services/${selectedService.value}/${selectedCar.value.size}`)
+  const response = await api.get(
+    `/api/services/${selectedService.value.name}/${selectedCar.value.size}`,
+  )
   return response.data[0]
 }
 

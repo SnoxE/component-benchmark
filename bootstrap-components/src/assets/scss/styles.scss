@@ -1,8 +1,39 @@
-// $primary: #002c00;
-$body-bg-dark: #0c0c0d;
-// $body-bg-dark: #18191b;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+$primary: #ff6d01;
+$body-bg: #fbfbfb;
+$body-color: #141414;
+$font-family-sans-serif: 'Poppins', sans-serif;
+$headings-font-family: 'Montserrat', sans-serif;
+$border-color: #c4c4c4;
+$gray-600: #575757;
+$light-gray: #dcdcdc;
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #ffffff !important;
+  // color: #212529;
+  // background-color: var(--color-background) !important;
+  font-family: $font-family-sans-serif;
+}
 
 .btn-primary {
   color: white !important;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+nav.navbar .navbar-brand.text-primary {
+  color: $primary !important;
+}
+
+.navbar .nav-link {
+  color: #000000;
+}
+
+// For the mobile menu toggle button
+.navbar-toggler-icon {
+  color: #000000 !important;
 }

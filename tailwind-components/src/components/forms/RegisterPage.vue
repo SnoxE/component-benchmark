@@ -75,6 +75,7 @@
             />
             <button
               type="button"
+              name="passwordToggle"
               class="absolute right-2 top-2.5 text-gray-500"
               @click="togglePassword"
             >
@@ -180,6 +181,12 @@ const togglePassword = () => {
 }
 
 const handleSubmit = () => {
-  console.log({ email: email.value, password: password.value, remember: remember.value })
+  console.log({
+    first_name: first_name.value,
+    last_name: last_name.value,
+    email: email.value,
+    password: password.value,
+    remember: remember.value,
+  })
 }
 </script>

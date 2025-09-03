@@ -6,32 +6,6 @@
     </SectionHeading>
 
     <div class="flex flex-col gap-6 items-center px-2">
-      <!-- <div
-        v-for="car in carList"
-        :key="car.id"
-        class="flex max-w-screen-md w-full rounded-xl text-title justify-between bg-light-gray-text py-4 pl-12 pr-8"
-      >
-        <div class="pr-4">
-          <div class="body-text-md">
-            {{ car.make }}
-          </div>
-          <div class="body-text-sm font-semibold">
-            {{ car.model }}
-          </div>
-        </div>
-        <div class="my-auto">
-          {{ car.production_year }}
-        </div>
-        <div class="my-auto">
-          {{ titleCase(car.colour.toLowerCase()) }}
-        </div>
-        <button
-          class="my-auto hover:border-1 hover:border-primary-orange rounded-sm cursor-pointer"
-          @click="deleteCar(car.id)"
-        >
-          <img src="@/assets/images/icons/close.svg" alt="close" />
-        </button>
-      </div> -->
       <div
         v-for="car in carList"
         :key="car.id"

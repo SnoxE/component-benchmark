@@ -1,62 +1,80 @@
 <template>
-  <div
-    class="position-relative w-100 d-flex justify-content-center overlay-container hero-picture z-0"
-  >
-    <picture>
-      <source media="(max-width: 714px)" srcset="@/assets/Taycan_wash_edited_mobile.jpg" />
-      <source media="(min-width: 715px)" srcset="@/assets/Taycan_wash_edited.jpg" />
-      <img
-        src="@/assets/Taycan_wash_edited.jpg"
-        alt="Man manually washing a Porsche Taycan"
-        class="img-fluid"
-      />
-    </picture>
-
-    <div
-      class="position-absolute top-50 start-0 w-100 d-flex flex-column justify-content-center translate-middle-y z-2"
-    >
-      <h1
-        class="d-flex justify-content-center p-4 text-center fw-bold fs-1 text-white display-responsive"
-      >
-        Perfekcja w każdym detalu. <br />
-        Twoje auto, nasza pasja.
-      </h1>
-      <div class="container text-center">
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-outline-orange mx-4 px-4 w-160 fw-semibold">Nasza oferta</button>
-          <button class="btn btn-outline-orange mx-4 px-4 w-160 fw-semibold">Rezerwuj</button>
+  <section class="hero-section position-relative mb-5">
+    <div class="container-xl h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 col-md-5 hero-content">
+          <div class="content-wrapper">
+            <h1 class="text-white mb-3">
+              Odkryj perfekcyjny <br />
+              wygląd swojego auta
+            </h1>
+            <p class="text-light mb-4 fs-5">
+              Profesjonalna pielęgnacja, renowacja <br />
+              i ochrona Twojego samochodu.
+            </p>
+            <div class="text-start">
+              <router-link to="/#about" class="btn btn-primary btn-lg px-4"> Odkrywaj </router-link>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-8 offset-md-4 image-container">
+          <img
+            src="@/assets/images/amg_gt3-909.webp"
+            alt="Car Image"
+            class="img-fluid"
+            rel="preload"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<script setup></script>
+<style scoped>
+.hero-section {
+  height: 100vh;
+  max-height: 600px;
+  background: linear-gradient(to right, #000000 50%, #ffffff 50%);
+  overflow: hidden;
+}
 
-<style>
-.overlay-container::before {
-  content: '';
+@media (min-width: 768px) {
+  .hero-section {
+    max-height: 765px;
+  }
+}
+
+.hero-content {
   position: absolute;
-  inset: 0;
-  background-color: black;
-  opacity: 0.6;
+  left: 10%;
+  z-index: 2;
 }
 
-.hero-picture {
-  z-index: 0;
+.image-container {
+  position: relative;
+  z-index: 1;
 }
 
-.btn-outline-orange {
-  color: white;
-  border-color: #f97316;
+.btn-primary {
+  background-color: #ff6b00;
+  border-color: #ff6b00;
+  border-radius: 0.375rem;
 }
 
-.btn-outline-orange:hover {
-  background-color: #f97316;
-  color: white;
+.btn-primary:hover {
+  background-color: #e66000;
+  border-color: #e66000;
 }
 
-.w-160 {
-  width: 160px;
+@media (max-width: 767px) {
+  .hero-content {
+    position: relative;
+  }
+
+  .image-container {
+    margin: 0;
+  }
 }
 </style>
