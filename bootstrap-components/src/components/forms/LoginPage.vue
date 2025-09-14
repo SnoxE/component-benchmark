@@ -11,16 +11,16 @@
 
       <div class="col-12 col-md-5 d-flex flex-column justify-content-center p-4 p-sm-5 bg-white">
         <div class="mb-4">
-          <router-link to="/" class="text-primary fs-3 fw-semibold text-decoration-none">
+          <router-link to="/" class="text-primary fs-3 fw-medium text-decoration-none">
             DG Detailing
           </router-link>
         </div>
 
-        <h2 class="fs-4 fs-sm-1 mb-4">Dobrze Cię znowu widzieć!</h2>
+        <h2 class="text-title fs-4 fs-sm-1 mb-4">Dobrze Cię znowu widzieć!</h2>
 
         <form @submit.prevent="handleSubmit" class="d-flex flex-column gap-3">
           <div class="form-group">
-            <label class="form-label ms-2">Login</label>
+            <label class="form-label ms-2 text-title">Login</label>
             <input
               type="text"
               v-model="email"
@@ -36,7 +36,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label ms-2">Hasło</label>
+            <label class="form-label ms-2 text-title">Hasło</label>
             <div class="position-relative">
               <input
                 :type="showPassword ? 'text' : 'password'"
@@ -117,7 +117,7 @@
             Zaloguj się
           </button>
 
-          <div class="d-flex align-items-center my-3">
+          <div class="d-flex align-items-center my-3 text-secondary">
             <hr class="flex-grow-1" />
             <span class="px-3 small">lub</span>
             <hr class="flex-grow-1" />
@@ -149,7 +149,7 @@
           </button>
         </form>
 
-        <p class="text-center small mt-4">
+        <p class="text-center small mt-4 text-title">
           Nie masz jeszcze konta?
           <router-link to="/register" class="text-primary text-decoration-none">
             Zarejestruj się
@@ -229,5 +229,13 @@ const handleSubmit = async () => {
 
 .text-primary {
   color: var(--bs-primary) !important;
+}
+
+.text-title {
+  color: #141414;
+}
+
+.text-secondary {
+  color: #a5a5a5;
 }
 </style>

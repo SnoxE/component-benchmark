@@ -7,7 +7,7 @@
       </SectionHeading>
     </div>
 
-    <div class="d-flex flex-column gap-3 align-items-center pb-5 px-2">
+    <div class="d-flex flex-column gap-3 align-items-center pb-5 px-2 text-title">
       <div
         v-for="order in orderList"
         :key="order.res_id"
@@ -21,7 +21,7 @@
           <img src="@/assets/images/icons/close.svg" alt="close" width="16" height="16" />
         </button>
 
-        <div class="d-none d-md-grid align-items-center reservation-grid">
+        <div class="d-none d-md-grid align-items-center reservation-grid text-title">
           <div>
             <div class="fw-semibold">{{ order.services_name }}</div>
             <div>
@@ -169,5 +169,9 @@ onMounted(async () => {
 }
 .delete-btn:hover {
   border: 1px solid #ff6d01;
+}
+
+.text-title {
+  color: #141414 !important;
 }
 </style>

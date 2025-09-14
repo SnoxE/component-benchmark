@@ -40,11 +40,11 @@ const router = createRouter({
       name: 'reservations',
       component: () => import('@/views/ReservationsView.vue'),
     },
-    // {
-    //   path: '/user/add-car',
-    //   name: 'add-car',
-    //   component: () => import('@/views/AddCarView.vue'),
-    // },
+    {
+      path: '/user/add-car',
+      name: 'add-car',
+      component: () => import('@/views/AddCarView.vue'),
+    },
     {
       path: '/book',
       name: 'book',

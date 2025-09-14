@@ -143,7 +143,6 @@ const addCar = async () => {
     }
   } catch (error) {
     console.error('Error adding car:', error)
-    // you can also show a user-facing message here:
     console.log('Nie udało się dodać samochodu, spróbuj ponownie.')
   } finally {
     submitting.value = false

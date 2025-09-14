@@ -16,7 +16,7 @@
             <router-link
               v-if="!item.children"
               :to="item.url"
-              class="text-sm"
+              class="text-md"
               :class="
                 item.cta ? 'ml-20 bg-primary-orange rounded-md py-2 px-4 text-background' : ''
               "
@@ -42,7 +42,7 @@
                 <button
                   v-if="child.id === 'logout'"
                   @click="onItemClick(child)"
-                  class="w-full text-left text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  class="w-full text-left text-md px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   role="menuitem"
                 >
                   {{ child.name }}
@@ -50,7 +50,7 @@
                 <router-link
                   v-else
                   :to="child.url"
-                  class="block text-sm px-4 py-2 hover:bg-gray-100"
+                  class="block text-md px-4 py-2 hover:bg-gray-100"
                   role="menuitem"
                 >
                   {{ child.name }}
@@ -109,10 +109,10 @@
           v-if="item.id === 'logout'"
           @click="onItemClick(item)"
           :to="item.url"
-          class="text-sm"
+          class="text-md"
           >{{ item.name }}</router-link
         >
-        <router-link v-else :to="item.url" class="text-sm">{{ item.name }}</router-link>
+        <router-link v-else :to="item.url" class="text-md">{{ item.name }}</router-link>
       </li>
     </ul>
   </div>

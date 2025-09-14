@@ -13,7 +13,7 @@
         class="col-12 col-md-5 d-flex flex-column justify-content-center bg-white px-4 px-sm-5 py-5"
       >
         <div class="mb-4">
-          <router-link to="/" class="text-primary fs-3 fw-semibold text-decoration-none">
+          <router-link to="/" class="text-primary fs-3 fw-medium text-decoration-none">
             DG Detailing
           </router-link>
         </div>
@@ -108,7 +108,7 @@
 
           <button type="submit" class="btn btn-primary w-100 py-2">Zarejestruj się</button>
 
-          <div class="d-flex align-items-center my-3">
+          <div class="d-flex align-items-center my-3 text-secondary">
             <hr class="flex-grow-1" />
             <span class="px-3 small">lub</span>
             <hr class="flex-grow-1" />
@@ -140,7 +140,7 @@
           </button>
         </form>
 
-        <p class="text-center small mt-4">
+        <p class="text-center small mt-4 text-secondary">
           Masz już konto?
           <router-link to="/login" class="text-primary text-decoration-none"
             >Zaloguj się</router-link

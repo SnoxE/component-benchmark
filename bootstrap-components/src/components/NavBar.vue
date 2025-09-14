@@ -1,10 +1,15 @@
 <template>
   <nav
     class="navbar navbar-expand-lg fixed-top transition py-3"
-    :class="[scrolled ? 'bg-white bg-opacity-75 shadow' : 'bg-transparent']"
+    :class="[
+      scrolled ? 'bg-white bg-opacity-75 shadow' : 'bg-transparent',
+      $route.path === '/' ? 'landing-navbar' : '',
+    ]"
   >
     <div class="container-xl px-4 px-lg-5">
-      <router-link to="/" class="navbar-brand text-primary fs-3"> DG Detailing </router-link>
+      <router-link to="/" class="navbar-brand text-primary fw-medium fs-3">
+        DG Detailing
+      </router-link>
 
       <button
         class="navbar-toggler"
@@ -20,8 +25,10 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <template v-for="(item, index) in menuItems" :key="index">
+        <!-- force remount when layout changes -->
+        <ul class="navbar-nav ms-auto align-items-center" :key="isMobile ? 'mobile' : 'desktop'">
+          <template v-for="item in menuItems" :key="item.id">
+            <!-- simple link -->
             <li v-if="!item.children" class="nav-item">
               <router-link
                 :to="item.url"
@@ -33,6 +40,7 @@
               </router-link>
             </li>
 
+            <!-- dropdown (desktop) -->
             <li v-else class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -44,7 +52,7 @@
                 <img src="@/assets/images/icons/person.svg" alt="user" width="24" height="24" />
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li v-for="child in item.children" :key="child.id">
+                <li v-for="child in item.children" :key="`${item.id}-${child.id}`">
                   <a
                     v-if="child.id === 'logout'"
                     href="#"
@@ -97,50 +105,18 @@ const checkMobile = () => {
 }
 
 const loggedOutItems = [
-  {
-    name: 'O Nas',
-    url: '/#about',
-  },
-  {
-    name: 'Oferta',
-    url: '/services',
-  },
-  {
-    name: 'Rezerwuj',
-    url: '/book',
-  },
-  {
-    name: 'Kontakt',
-    url: '/contact',
-  },
-  {
-    name: 'Zaloguj',
-    url: '/login',
-    cta: true,
-  },
+  { id: 'about', name: 'O Nas', url: '/#about' },
+  { id: 'offer', name: 'Oferta', url: '/services' },
+  { id: 'book', name: 'Rezerwuj', url: '/book' },
+  { id: 'contact', name: 'Kontakt', url: '/contact' },
+  { id: 'login', name: 'Zaloguj', url: '/login', cta: true },
 ]
 
 const loggedInItems = [
-  {
-    id: 'about',
-    name: 'O Nas',
-    url: '/#about',
-  },
-  {
-    id: 'oferta',
-    name: 'Oferta',
-    url: '/services',
-  },
-  {
-    id: 'book',
-    name: 'Rezerwuj',
-    url: '/book',
-  },
-  {
-    id: 'contact',
-    name: 'Kontakt',
-    url: '/contact',
-  },
+  { id: 'about', name: 'O Nas', url: '/#about' },
+  { id: 'offer', name: 'Oferta', url: '/services' },
+  { id: 'book', name: 'Rezerwuj', url: '/book' },
+  { id: 'contact', name: 'Kontakt', url: '/contact' },
   {
     id: 'user',
     url: '/',
@@ -153,26 +129,10 @@ const loggedInItems = [
 ]
 
 const mobileLoggedInItems = [
-  {
-    id: 'about',
-    name: 'O Nas',
-    url: '/#about',
-  },
-  {
-    id: 'oferta',
-    name: 'Oferta',
-    url: '/services',
-  },
-  {
-    id: 'book',
-    name: 'Rezerwuj',
-    url: '/book',
-  },
-  {
-    id: 'contact',
-    name: 'Kontakt',
-    url: '/contact',
-  },
+  { id: 'about', name: 'O Nas', url: '/#about' },
+  { id: 'offer', name: 'Oferta', url: '/services' },
+  { id: 'book', name: 'Rezerwuj', url: '/book' },
+  { id: 'contact', name: 'Kontakt', url: '/contact' },
   { id: 'orders', name: 'Rezerwacje', url: '/user/reservations' },
   { id: 'cars', name: 'Samochody', url: '/user/cars' },
   { id: 'logout', name: 'Wyloguj', url: '/', logout: true, cta: true },
@@ -221,12 +181,13 @@ const onItemClick = async (item) => {
   font-weight: 600;
 }
 
-.nav-link {
-  font-weight: 500;
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+/* On landing page → white icon */
+.landing-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 @media (min-width: 992px) {

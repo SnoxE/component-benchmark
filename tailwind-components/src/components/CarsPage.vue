@@ -9,12 +9,9 @@
       <div
         v-for="car in carList"
         :key="car.id"
-        class="max-w-screen-md w-full rounded-xl bg-light-gray-text text-title py-4 pl-12 pr-8 flex items-center justify-between gap-4 sm:grid sm:items-center sm:gap-x-6 sm:grid-cols-[minmax(0,1fr)_100px_140px_24px]"
+        class="max-w-screen-md w-full rounded-xl bg-light-gray-text text-title py-4 pl-12 pr-8 grid grid-cols-[minmax(0,1fr)_110px_24px] gap-x-4 gap-y-1 sm:items-center sm:gap-x-6 sm:grid-cols-[minmax(0,1fr)_100px_140px_24px]"
       >
-        <!-- Marka / model -->
-        <!-- MOBILE: bez truncate, tak jak wcześniej.
-       DESKTOP: w gridzie włączamy min-w-0 + truncate, żeby nie rozpychało. -->
-        <div class="pr-4 sm:min-w-0">
+        <div class="pr-2 sm:min-w-0">
           <div class="body-text-md sm:truncate" :title="car.make">
             {{ car.make }}
           </div>
@@ -23,28 +20,23 @@
           </div>
         </div>
 
-        <!-- Rok -->
-        <!-- MOBILE: zwykły tekst (bez sztywnej szerokości).
-       DESKTOP: stała kolumna, cyfry mono-szerokości i wyśrodkowanie. -->
-        <div
-          class="my-auto sm:body-text-md sm:whitespace-nowrap sm:tabular-nums sm:text-center sm:w-[140px]"
-        >
-          {{ car.production_year }}
+        <div class="col-start-2 row-span-2 flex flex-col gap-0.5 sm:contents">
+          <div
+            class="my-auto sm:body-text-md sm:whitespace-nowrap sm:text-center sm:w-[130px] sm:col-auto sm:row-auto"
+          >
+            {{ car.production_year }}
+          </div>
+
+          <div
+            class="my-auto sm:text-center sm:w-[200px] sm:truncate sm:col-auto sm:row-auto"
+            :title="titleCase(car.colour.toLowerCase())"
+          >
+            {{ titleCase(car.colour.toLowerCase()) }}
+          </div>
         </div>
 
-        <!-- Kolor -->
-        <!-- MOBILE: zwykły tekst po prawej (bez truncate).
-       DESKTOP: stała kolumna, opcjonalny truncate. -->
-        <div
-          class="my-auto sm:text-center sm:w-[200px] sm:truncate"
-          :title="titleCase(car.colour.toLowerCase())"
-        >
-          {{ titleCase(car.colour.toLowerCase()) }}
-        </div>
-
-        <!-- X -->
         <button
-          class="my-auto sm:justify-self-end hover:border-1 hover:border-primary-orange rounded-sm cursor-pointer"
+          class="hover:border-1 hover:border-primary-orange rounded-sm cursor-pointer col-start-3 row-span-2 self-center justify-self-end sm:col-start-auto sm:row-span-1 sm:self-auto"
           @click="deleteCar(car.id)"
           aria-label="Usuń samochód"
         >
@@ -52,7 +44,6 @@
         </button>
       </div>
 
-      <!--  -->
       <router-link
         to="/user/add-car"
         class="rounded-md border p-2 px-10 text-title border-primary-orange hover:bg-primary-orange hover:text-white"
@@ -68,15 +59,12 @@ import { ref, onMounted } from 'vue'
 import api from '@/api/axios.js'
 import SectionHeading from '@/components/SectionHeading.vue'
 
-// State
 const carList = ref([])
 const userId = ref('')
 
-// Fetch functions
 const fetchUserId = async () => {
   const response = await api.get('api/users/user')
   userId.value = response.data['id']
-  console.log(response)
 }
 
 const fetchUserCars = async () => {
@@ -93,13 +81,12 @@ const deleteCar = async (carId) => {
   }
 }
 
-const titleCase = (input) => {
-  return input
+const titleCase = (input) =>
+  input
     .toLowerCase()
     .split(' ')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
-}
 
 onMounted(async () => {
   await fetchUserId()
